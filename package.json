@@ -1,0 +1,31 @@
+{
+    "name": "el-supplement-ui",
+    "version": "1.0.0",
+    "description": "对element-ui进行拓展的ui组件",
+    "main": "src/index.js",
+    "files": [
+      "lib",
+      "src",
+      "packages"
+    ],
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "unpkg": "src/index.js",
+    "style": "lib/index.scss",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/dunfee1994/el-supplement-ui.git"
+    },
+    "keywords": [
+        "el-supplement-ui",
+        "tree-transfer",
+        "checkbox-dropdown"
+    ],
+    "author": "dunfee_94",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/dunfee1994/el-supplement-ui/issues"
+    },
+    "homepage": "https://github.com/dunfee1994/el-supplement-ui#readme"
+}
