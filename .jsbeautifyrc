@@ -1,0 +1,15 @@
+{
+    "indent_char": " ",
+    "indent_size": 4,
+
+    "html": {
+        "extra_liners": [],
+        "wrap_attributes": "auto"
+    },
+
+    "css": {
+        "newline_between_rules": false,
+        "selector_separator_newline": false,
+        "space_around_combinator": false
+    }
+}
