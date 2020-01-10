@@ -1,0 +1,32 @@
+.el-sup-tree-transfer {
+    .el-transfer__button.el-button--small {
+        padding: 9px 15px;
+        i,
+        span {
+            font-size: 12px;
+        }
+    }
+    .el-button--danger.is-remove-btn:not(.is-disabled) {
+        background-color: #f56c6c;
+    }
+    .el-transfer-panel__header .el-checkbox .el-checkbox__label {
+        font-size: 15px;
+    }
+    .el-tree__in-transfer {
+        height: 190px;
+        overflow-y: auto;
+        &::-webkit-scrollbar {
+            width: 5px;
+        }
+    }
+}
+
+.el-sup-dropdown-checkbox {
+    overflow-y: auto;
+    &::-webkit-scrollbar {
+        width: 5px;
+    }
+    .el-dropdown-menu__item:hover {
+        background: transparent;
+    }
+}
