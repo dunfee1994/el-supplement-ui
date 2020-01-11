@@ -1,7 +1,7 @@
 <template>
     <el-dropdown :hide-on-click="false">
         <el-button>
-            列表项
+            {{buttonText}}
             <i class="el-icon-arrow-down el-icon--right"></i>
         </el-button>
         <el-dropdown-menu
@@ -29,6 +29,10 @@ export default {
         maxHeight: {
             type: String,
             default: () => "290px"
+        },
+        buttonText: {
+            type: String,
+            default: () => "列表项"
         },
         value: Array,
         allColumns: {
