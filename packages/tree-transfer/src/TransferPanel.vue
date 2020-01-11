@@ -62,8 +62,7 @@ export default {
         };
     },
     mounted() {
-        let tree = this.$refs["tree"];
-        this.emitChange(tree.getCheckedNodes());
+        this.emitChange();
     },
     methods: {
         getTreeData() {
@@ -76,13 +75,32 @@ export default {
             this.allChecked = false;
             this.checkedLeafKeys = [];
         },
-        emitChange(checkedNodes) {
+        emitChange() {
             // 提交改变
-            let checkedLeafNodes = checkedNodes.filter(item => item.isLeaf),
-                checkedLeafKeys = checkedLeafNodes.map(item => item.id);
-            this.checkedNodes = checkedNodes;
-            this.checkedLeafKeys = checkedLeafKeys;
-            this.$emit("check-change", checkedLeafNodes, checkedLeafKeys);
+            let tree = this.$refs["tree"];
+            this.$nextTick(() => {
+                let checkedNodes = tree.getCheckedNodes(),
+                    checkedLeafNodes = tree.getCheckedNodes(true),
+                    checkedKeys = tree.getCheckedKeys(),
+                    checkedLeafKeys = tree.getCheckedKeys(true);
+
+                this.checkedNodes = checkedNodes;
+                this.checkedLeafKeys = checkedLeafKeys;
+
+                let halfCheckedNodes = tree.getHalfCheckedNodes(),
+                    halfCheckedKeys = tree.getHalfCheckedKeys();
+
+                let treeObj = {
+                    checkedNodes,
+                    checkedLeafNodes,
+                    checkedKeys,
+                    checkedLeafKeys,
+                    halfCheckedNodes,
+                    halfCheckedKeys
+                };
+
+                this.$emit("check-change", treeObj);
+            });
         },
         handleAllCheckedChange(val) {
             // 处理总checkbox状态改变事件
@@ -92,17 +110,15 @@ export default {
             let tree = this.$refs["tree"];
             if (val) {
                 tree.setCheckedNodes(this.data);
-                this.$nextTick(() => {
-                    this.emitChange(tree.getCheckedNodes());
-                });
+                this.emitChange();
             } else {
                 tree.setCheckedNodes([]);
-                this.emitChange([]);
+                this.emitChange();
             }
         },
-        handleCheck(nodeObj, treeObj) {
+        handleCheck() {
             // 处理节点被选中事件
-            this.emitChange(treeObj.checkedNodes);
+            this.emitChange();
         },
         filterNode(value, data) {
             // 过滤节点函数
@@ -115,9 +131,7 @@ export default {
             this.$nextTick(() => {
                 let tree = this.$refs["tree"];
                 tree.setCheckedKeys(this.checkedLeafKeys);
-                this.$nextTick(() => {
-                    this.emitChange(tree.getCheckedNodes());
-                });
+                this.emitChange();
                 if (val.length > 0) {
                     this.isIndeterminate = true;
                     this.allChecked = false;

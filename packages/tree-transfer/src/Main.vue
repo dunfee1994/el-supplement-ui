@@ -18,7 +18,7 @@
             <el-button
                 type="primary"
                 @click.native="addToRight"
-                :disabled="leftCheckedLeafKeys.length===0"
+                :disabled="leftCheckedKeys.length===0"
                 :class="['el-transfer__button', hasButtonTexts ? 'is-with-texts' : '']"
             >
                 <span v-if="buttonTexts[0] !== undefined">{{ buttonTexts[0] }}</span>
@@ -28,7 +28,7 @@
             <el-button
                 type="danger"
                 @click.native="addToLeft"
-                :disabled="rightCheckedLeafKeys.length===0"
+                :disabled="rightCheckedKeys.length===0"
                 :class="['el-transfer__button is-remove-btn', hasButtonTexts ? 'is-with-texts' : '']"
             >
                 <i class="el-icon-arrow-left"></i>
@@ -62,6 +62,10 @@ export default {
         data: {
             type: Array,
             default: () => []
+        },
+        dataType: {
+            type: String,
+            default: () => "leafKey"
         },
         value: {
             type: Array,
@@ -108,18 +112,20 @@ export default {
     },
     data() {
         return {
-            leftCheckedLeafKeys: [],
-            rightCheckedLeafKeys: []
+            leftCheckedKeys: [],
+            rightCheckedKeys: []
         };
     },
     methods: {
         addToRight() {
             // 将左侧panel选中内容推到右边panel
             let value = JSON.parse(JSON.stringify(this.value)),
-                leftCheckedLeafKeys = this.leftCheckedLeafKeys;
-            value = [...value, ...leftCheckedLeafKeys];
+                leftCheckedKeys = this.leftCheckedKeys;
+
+            let _set = new Set([...value, ...leftCheckedKeys]);
+            value = [..._set];
             this.$emit("input", value);
-            this.leftCheckedLeafKeys = [];
+            this.leftCheckedKeys = [];
 
             let leftPanel = this.$refs["leftPanel"],
                 rightPanel = this.$refs["rightPanel"];
@@ -140,15 +146,18 @@ export default {
         addToLeft() {
             // 将左侧panel选中内容推到左侧panel
             let value = JSON.parse(JSON.stringify(this.value)),
-                rightCheckedLeafKeys = this.rightCheckedLeafKeys;
-            rightCheckedLeafKeys.map(item => {
+                rightCheckedKeys = this.rightCheckedKeys;
+            rightCheckedKeys.map(item => {
                 let index;
                 if ((index = value.indexOf(item)) > -1) {
                     value.splice(index, 1);
                 }
             });
+
+            let _set = new Set([...value]);
+            value = [..._set];
             this.$emit("input", value);
-            this.rightCheckedLeafKeys = [];
+            this.rightCheckedKeys = [];
 
             let leftPanel = this.$refs["leftPanel"],
                 rightPanel = this.$refs["rightPanel"];
@@ -166,15 +175,29 @@ export default {
                 );
             });
         },
-        hanldeLeftCheckChange(checkedLeafNodes, checkedLeafKeys) {
+        hanldeLeftCheckChange(treeObj) {
             // 处理左侧panel选中改变
-            this.leftCheckedLeafKeys = checkedLeafKeys;
-            this.$emit("left-check-change", checkedLeafNodes, checkedLeafKeys);
+            if (this.dataType === "leafKey") {
+                this.leftCheckedKeys = treeObj.checkedLeafKeys;
+            } else {
+                this.leftCheckedKeys = [
+                    ...treeObj.checkedKeys,
+                    ...treeObj.halfCheckedKeys
+                ];
+            }
+            this.$emit("left-check-change", treeObj);
         },
-        hanldeRightCheckChange(checkedLeafNodes, checkedLeafKeys) {
+        hanldeRightCheckChange(treeObj) {
             // 处理右侧panel选中改变
-            this.rightCheckedLeafKeys = checkedLeafKeys;
-            this.$emit("right-check-change", checkedLeafNodes, checkedLeafKeys);
+            if (this.dataType === "leafKey") {
+                this.rightCheckedKeys = treeObj.checkedLeafKeys;
+            } else {
+                this.rightCheckedKeys = [
+                    ...treeObj.checkedKeys,
+                    ...treeObj.halfCheckedKeys
+                ];
+            }
+            this.$emit("right-check-change", treeObj);
         },
         frmtData(data) {
             // 格式化数据（添加是否是叶子节点的表示isLeaf，是为true，不是为false）
@@ -200,24 +223,23 @@ export default {
         },
         treeData() {
             let data = JSON.parse(JSON.stringify(this.data));
-            if (data.lenth === 0) {
-                return [];
-            }
-            if (data[0]) {
-                data[0]["pid"] = 0;
-            }
+            data = data.map(item => {
+                item["pid"] = 0;
+                return item;
+            });
             this.frmtData(data);
             return data;
         },
         leftData() {
             // 左侧panel的数据data
             let data = JSON.parse(JSON.stringify(this.treeData)),
-                value = this.value;
+                value = this.value,
+                nodeKey = this.nodeKey || "id";
             if (data.length === 0) {
                 return [];
             }
 
-            function filterData(data, value) {
+            function filterData(data, value, nodeKey) {
                 var i = 0,
                     len = data.length;
                 for (; i < len; i++) {
@@ -225,16 +247,16 @@ export default {
                         Array.isArray(data[i].children) &&
                         data[i].children.length > 0
                     ) {
-                        filterData(data[i].children, value);
+                        filterData(data[i].children, value, nodeKey);
                         data[i].children = data[i].children.filter(item => {
                             return item.isLeaf
-                                ? value.indexOf(item.id) < 0
+                                ? value.indexOf(item[nodeKey]) < 0
                                 : item.children.length > 0;
                         });
                     }
                 }
             }
-            filterData(data, value);
+            filterData(data, value, nodeKey);
             if (data[0].children.length === 0) {
                 return [];
             }
@@ -243,12 +265,13 @@ export default {
         rightData() {
             // 右侧panel的数据data
             let data = JSON.parse(JSON.stringify(this.treeData)),
-                value = this.value;
+                value = this.value,
+                nodeKey = this.nodeKey || "id";
             if (data.length === 0) {
                 return [];
             }
 
-            function filterData(data, value) {
+            function filterData(data, value, nodeKey) {
                 var i = 0,
                     len = data.length;
                 for (; i < len; i++) {
@@ -256,16 +279,16 @@ export default {
                         Array.isArray(data[i].children) &&
                         data[i].children.length > 0
                     ) {
-                        filterData(data[i].children, value);
+                        filterData(data[i].children, value, nodeKey);
                         data[i].children = data[i].children.filter(item => {
                             return item.isLeaf
-                                ? value.indexOf(item.id) > -1
+                                ? value.indexOf(item[nodeKey]) > -1
                                 : item.children.length > 0;
                         });
                     }
                 }
             }
-            filterData(data, value);
+            filterData(data, value, nodeKey);
             if (data[0].children.length === 0) {
                 return [];
             }
