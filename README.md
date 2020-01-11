@@ -23,11 +23,11 @@ Vue.use(ElSupplement)
 
 // example two
 import {
-    CheckboxDropDown,
-    TreeTransfer
+    ElSupCheckboxDropDown,
+    ElSupTreeTransfer
 } from 'el-supplement-ui'
-Vue.component(CheckboxDropDown.name, CheckboxDropDown)
-Vue.component(TreeTransfer.name, TreeTransfer)
+Vue.component(ElSupCheckboxDropDown.name, ElSupCheckboxDropDown)
+Vue.component(ElSupTreeTransfer.name, ElSupTreeTransfer)
 
 // 引入element-ui index.css
 import 'element-ui/lib/theme-chalk/index.css';
@@ -39,7 +39,7 @@ import 'el-supplement-ui/lib/index.scss';
 ElSupTreeTransfer，这个组件的功能类似于element-ui的transfer组件，但其是一个支持树形结构的穿梭框组件。这个组件主要依赖element-ui的el-checkbox、el-input、el-button、el-tree等组件和el-transfer组件的样式.
 
 ### Use
-```javascript
+```html
 <template>
     <el-container>
         <section style="margin: 2vh 2vw;">
@@ -68,6 +68,8 @@ ElSupTreeTransfer，这个组件的功能类似于element-ui的transfer组件，
         </section>
     </el-container>
 </template>
+```
+```javascript
 import { ElSupTreeTransfer } from 'el-supplement-ui'
 export default {
     name: "demo",
@@ -183,10 +185,54 @@ export default {
 }
 ```
 
-## CheckboxDropDown
-CheckboxDropDown，下拉复选框组件，以下拉的方式显示复选框列表。这个组件主要依赖element-ui的el-button、el-dropdown、el-dropdown-menu、el-dropdown-item、el-checkbox-group、el-checkbox等组件。
+## ElSupCheckboxDropDown
+ElSupCheckboxDropDown，下拉复选框组件，以下拉的方式显示复选框列表。这个组件主要依赖element-ui的el-button、el-dropdown、el-dropdown-menu、el-dropdown-item、el-checkbox-group、el-checkbox等组件。
 
 ### Use
+```html
+<template>
+    <el-container>
+        <el-sup-checkbox-dropdown
+            v-model="checkedColumns"
+            buttonText="列表项"
+            :allColumns="allColumns"
+            @change="changeColumns"
+        />
+    </el-container>
+</template>
+```
 ```javascript
-
+import { ElSupCheckboxDropDown } from 'el-supplement-ui'
+export default {
+    name: "demo",
+    components: {
+        ElSupCheckboxDropDown
+    },
+    data() {
+        return {
+            checkedColumns: [], // 选中值（表格需展示的column）
+            allColumns: [
+                { label: "realName", name: "姓名" },
+                { label: "departmentName", name: "部门" },
+                { label: "majorName", name: "专业组" },
+                { label: "certificate", name: "认证数" },
+                { label: "activity1", name: "授课量" },
+                { label: "activity2", name: "参加培训量" },
+                { label: "weekkly", name: "周报" },
+                { label: "order", name: "工单处理量" },
+                { label: "project", name: "工程割接量" },
+                { label: "log_operation", name: "系统使用量" },
+                { label: "value_week", name: "值周量" },
+                { label: "demandSubmission", name: "需求提交量" },
+                { label: "service_count", name: "服务开发量" },
+                { label: "deployed_service", name: "服务发布量" }
+            ] // 表格全部column
+        }
+    },
+    methods: {
+        changeColumns(columns) {
+            console.log(columns);
+        }
+    }
+}
 ```
