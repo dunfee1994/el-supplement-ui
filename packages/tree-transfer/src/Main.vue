@@ -63,7 +63,7 @@ export default {
             type: Array,
             default: () => []
         },
-        dataType: {
+        valueType: {
             type: String,
             default: () => "leafKey"
         },
@@ -177,7 +177,7 @@ export default {
         },
         hanldeLeftCheckChange(treeObj) {
             // 处理左侧panel选中改变
-            if (this.dataType === "leafKey") {
+            if (this.valueType === "leafKey") {
                 this.leftCheckedKeys = treeObj.checkedLeafKeys;
             } else {
                 this.leftCheckedKeys = [
@@ -189,7 +189,7 @@ export default {
         },
         hanldeRightCheckChange(treeObj) {
             // 处理右侧panel选中改变
-            if (this.dataType === "leafKey") {
+            if (this.valueType === "leafKey") {
                 this.rightCheckedKeys = treeObj.checkedLeafKeys;
             } else {
                 this.rightCheckedKeys = [

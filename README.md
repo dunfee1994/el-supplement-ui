@@ -1,5 +1,5 @@
 # el-supplement-ui
-el-supplement-ui是一个基于vue和element-ui的UI组件，其中包含ElSupTreeTransfer（支持树形结构的穿梭框）、CheckboxDropdown（下拉复选框）。本组件需在引入element-ui之后方可使用，所以，在使用之前请确认是否已经引入element-ui。
+el-supplement-ui是一个基于vue和element-ui的UI组件，其中包含ElSupTreeTransfer（支持树形结构的穿梭框）、ElSupCheckboxDropdown（下拉复选框）。本组件需在引入element-ui之后方可使用，所以，在使用之前请确认是否已经引入element-ui。
 
 ## Install
 ```shell
@@ -176,14 +176,42 @@ export default {
     },
     methods: {
         handleChange1(value, leftTreeData, rightTreeData) {
-            console.log("dataType: key", value, "top");
+            console.log("valueType: key", value, "top");
         },
         handleChange2(value, leftTreeData, rightTreeData) {
-            console.log("dataType: leafKey", value, "bottom");
+            console.log("valueType: leafKey", value, "bottom");
         }
     }
 }
 ```
+
+### Attributes
+| 参数 | 说明 | 类型 | 可选值 | 默认值 |
+| :---- | :---- | :---- | :---- | :---- |
+| value / v-model | 绑定值 | array | - | [] |
+| valueType | value的类型。类型为key时，value为右侧树所有节点的nodeKey组成的数组；类型为leafKey时，value为右侧树所有叶子节点的nodeKey组成的数组。 | string | key / leafKey | leafKey |
+| data | Transfer的数据源（树形结构) | array | - | [] |
+| filterable | 是否过滤节点 | boolean | - | false |
+| filterPlaceholder | 搜索框占位符 | string | - | 输入关键字进行过滤 |
+|  |  |  |  |  |
+|  |  |  |  |  |
+|  |  |  |  |  |
+|  |  |  |  |  |
+|  |  |  |  |  |
+|  |  |  |  |  |
+|  |  |  |  |  |
+
+### Events
+| 事件名称 | 说明 | 回调参数 |
+| :---- | :---- | :---- |
+|  |  |  |
+|  |  |  |
+|  |  |  |
+|  |  |  |
+|  |  |  |
+|  |  |  |
+|  |  |  |
+|  |  |  |
 
 ## ElSupCheckboxDropdown
 ElSupCheckboxDropdown，下拉复选框组件，以下拉的方式显示复选框列表。这个组件主要依赖element-ui的el-button、el-dropdown、el-dropdown-menu、el-dropdown-item、el-checkbox-group、el-checkbox等组件。
@@ -192,7 +220,7 @@ ElSupCheckboxDropdown，下拉复选框组件，以下拉的方式显示复选�
 ```html
 <template>
     <el-container>
-    <el-sup-checkbox-dropdown
+        <el-sup-checkbox-dropdown
             v-model="checkedColumns"
             buttonText="列表项"
             :allColumns="allColumns"
@@ -236,3 +264,28 @@ export default {
     }
 }
 ```
+
+### Attributes
+| 参数 | 说明 | 类型 | 可选值 | 默认值 |
+| :---- | :---- | :---- | :---- | :---- |
+|  |  |  |  |  |
+|  |  |  |  |  |
+|  |  |  |  |  |
+|  |  |  |  |  |
+|  |  |  |  |  |
+|  |  |  |  |  |
+|  |  |  |  |  |
+
+
+### Events
+| 事件名称 | 说明 | 回调参数 |
+| :---- | :---- | :---- |
+|  |  |  |
+|  |  |  |
+|  |  |  |
+|  |  |  |
+|  |  |  |
+|  |  |  |
+|  |  |  |
+|  |  |  |
+|  |  |  |
