@@ -41,33 +41,39 @@ ElSupTreeTransfer，这个组件的功能类似于element-ui的transfer组件，
 ### Use
 ```javascript
 <template>
-    <section style="margin: 2vh 2vw;">
-        <tree-transfer
-            v-model="value1"
-            filterable
-            open-all
-            data-type="key"
-            :data="data"
-            :left-default-checked="leftDefaultChecked"
-            :right-default-checked="rightDefaultChecked"
-            @change="handleChange1"
-        ></tree-transfer>
-    </section>
-    <section style="margin: 2vh 2vw;">
-        <tree-transfer
-            v-model="value2"
-            filterable
-            open-all
-            data-type="leafKey"
-            :data="data"
-            :left-default-checked="leftDefaultChecked"
-            :right-default-checked="rightDefaultChecked"
-            @change="handleChange2"
-        ></tree-transfer>
-    </section>
+    <el-container>
+        <section style="margin: 2vh 2vw;">
+            <el-sup-tree-transfer
+                v-model="value1"
+                filterable
+                open-all
+                data-type="key"
+                :data="data"
+                :left-default-checked="leftDefaultChecked"
+                :right-default-checked="rightDefaultChecked"
+                @change="handleChange1"
+            ></el-sup-tree-transfer>
+        </section>
+        <section style="margin: 2vh 2vw;">
+            <el-sup-tree-transfer
+                v-model="value2"
+                filterable
+                open-all
+                data-type="leafKey"
+                :data="data"
+                :left-default-checked="leftDefaultChecked"
+                :right-default-checked="rightDefaultChecked"
+                @change="handleChange2"
+            ></el-sup-tree-transfer>
+        </section>
+    </el-container>
 </template>
+import { ElSupTreeTransfer } from 'el-supplement-ui'
 export default {
     name: "demo",
+    components: {
+        ElSupTreeTransfer
+    },
     data() {
         return {
             data: [
