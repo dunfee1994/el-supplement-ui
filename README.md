@@ -205,8 +205,8 @@ export default {
 | 事件名称 | 说明 | 回调参数 |
 | :---- | :---- | :---- |
 | change | 右侧树节点变化时触发 | 当前值、左侧树的数据、右侧树的数据 |
-| left-check-change | 左侧树节点checkbox被用户选中 / 取消选中时触发 | 左侧树目前被选中的节点所组成的数组、左侧树目前被选中的叶子节点所组成的数组、左侧树目前被选中的节点的key所组成的数组、左侧树目前被选中的叶子节点的key所组成的数组、左侧树目前半选中的节点所组成的数组、左侧树目前半选中的节点的 key 所组成的数组 |
-| right-check-change | 右侧树节点checkbox被用户选中 / 取消选中时触发 | 右侧树目前被选中的节点所组成的数组、右侧树目前被选中的叶子节点所组成的数组、右侧树目前被选中的节点的key所组成的数组、右侧树目前被选中的叶子节点的key所组成的数组、右侧树目前半选中的节点所组成的数组、右侧树目前半选中的节点的 key 所组成的数组 |
+| left-check-change | 左侧树节点checkbox被用户选中 / 取消选中时触发 | 左侧树目前被选中的节点所组成的数组checkedNodes、左侧树目前被选中的叶子节点所组成的数组checkedLeafNodes、左侧树目前被选中的节点的key所组成的数组checkedKeys、左侧树目前被选中的叶子节点的key所组成的数组checkedLeafKeys、左侧树目前半选中的节点所组成的数组halfCheckedNodes、左侧树目前半选中的节点的key所组成的数组halfCheckedKeys |
+| right-check-change | 右侧树节点checkbox被用户选中 / 取消选中时触发 | 右侧树目前被选中的节点所组成的数组checkedNodes、右侧树目前被选中的叶子节点所组成的数组checkedLeafNodes、右侧树目前被选中的节点的key所组成的数组checkedKeys、右侧树目前被选中的叶子节点的key所组成的数组checkedLeafKeys、右侧树目前半选中的节点所组成的数组halfCheckedNodes、右侧树目前半选中的节点的key所组成的数组halfCheckedKeys |
 
 ## ElSupCheckboxDropdown
 ElSupCheckboxDropdown，下拉复选框组件，以下拉的方式显示复选框列表。这个组件主要依赖element-ui的el-button、el-dropdown、el-dropdown-menu、el-dropdown-item、el-checkbox-group、el-checkbox等组件。
