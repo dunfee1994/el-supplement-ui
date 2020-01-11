@@ -1,8 +1,8 @@
-import ElSupCheckboxDropDown from '../packages/checkbox-dropdown/index.js';
+import ElSupCheckboxDropdown from '../packages/checkbox-dropdown/index.js';
 import ElSupTreeTransfer from '../packages/tree-transfer/index.js';
 
 const components = [
-    ElSupCheckboxDropDown,
+    ElSupCheckboxDropdown,
     ElSupTreeTransfer
 ];
 
@@ -13,13 +13,13 @@ const install = function(Vue) {
 };
 
 export {
-    ElSupCheckboxDropDown,
+    ElSupCheckboxDropdown,
     ElSupTreeTransfer
 };
 
 export default {
     version: "1.0.2",
     install,
-    ElSupCheckboxDropDown,
+    ElSupCheckboxDropdown,
     ElSupTreeTransfer
 };

@@ -1,5 +1,5 @@
 # el-supplement-ui
-el-supplement-ui是一个基于vue和element-ui的UI组件，其中包含ElSupTreeTransfer（支持树形结构的穿梭框）、CheckboxDropDown（下拉复选框）。本组件需在引入element-ui之后方可使用，所以，在使用之前请确认是否已经引入element-ui。
+el-supplement-ui是一个基于vue和element-ui的UI组件，其中包含ElSupTreeTransfer（支持树形结构的穿梭框）、CheckboxDropdown（下拉复选框）。本组件需在引入element-ui之后方可使用，所以，在使用之前请确认是否已经引入element-ui。
 
 ## Install
 ```shell
@@ -23,10 +23,10 @@ Vue.use(ElSupplement)
 
 // example two
 import {
-    ElSupCheckboxDropDown,
+    ElSupCheckboxDropdown,
     ElSupTreeTransfer
 } from 'el-supplement-ui'
-Vue.component(ElSupCheckboxDropDown.name, ElSupCheckboxDropDown)
+Vue.component(ElSupCheckboxDropdown.name, ElSupCheckboxDropdown)
 Vue.component(ElSupTreeTransfer.name, ElSupTreeTransfer)
 
 // 引入element-ui index.css
@@ -170,8 +170,8 @@ export default {
             ],
             value1: [1, 1001, 1001001, 1001001001],
             value2: [1001001001],
-            leftDefaultChecked: [1001001001],
-            rightDefaultChecked: [1002002001]
+            leftDefaultChecked: [1002002001],
+            rightDefaultChecked: [1001001001]
         };
     },
     methods: {
@@ -185,14 +185,14 @@ export default {
 }
 ```
 
-## ElSupCheckboxDropDown
-ElSupCheckboxDropDown，下拉复选框组件，以下拉的方式显示复选框列表。这个组件主要依赖element-ui的el-button、el-dropdown、el-dropdown-menu、el-dropdown-item、el-checkbox-group、el-checkbox等组件。
+## ElSupCheckboxDropdown
+ElSupCheckboxDropdown，下拉复选框组件，以下拉的方式显示复选框列表。这个组件主要依赖element-ui的el-button、el-dropdown、el-dropdown-menu、el-dropdown-item、el-checkbox-group、el-checkbox等组件。
 
 ### Use
 ```html
 <template>
     <el-container>
-        <el-sup-checkbox-dropdown
+    <el-sup-checkbox-dropdown
             v-model="checkedColumns"
             buttonText="列表项"
             :allColumns="allColumns"
@@ -202,11 +202,11 @@ ElSupCheckboxDropDown，下拉复选框组件，以下拉的方式显示复选�
 </template>
 ```
 ```javascript
-import { ElSupCheckboxDropDown } from 'el-supplement-ui'
+import { ElSupCheckboxDropdown } from 'el-supplement-ui'
 export default {
     name: "demo",
     components: {
-        ElSupCheckboxDropDown
+        ElSupCheckboxDropdown
     },
     data() {
         return {

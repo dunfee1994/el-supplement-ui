@@ -24,7 +24,7 @@
  * @date 2020/01/10
  */
 export default {
-    name: "ElSupCheckboxDropDown",
+    name: "ElSupCheckboxDropdown",
     props: {
         maxHeight: {
             type: String,

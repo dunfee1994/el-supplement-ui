@@ -1,8 +1,8 @@
-import ElSupCheckboxDropDown from './src/Main.vue';
+import ElSupCheckboxDropdown from './src/Main.vue';
 
 /* istanbul ignore next */
-ElSupCheckboxDropDown.install = function(vue) {
-    Vue.component(ElSupCheckboxDropDown.name, ElSupCheckboxDropDown);
+ElSupCheckboxDropdown.install = function(vue) {
+    Vue.component(ElSupCheckboxDropdown.name, ElSupCheckboxDropdown);
 };
 
-export default ElSupCheckboxDropDown;
+export default ElSupCheckboxDropdown;
