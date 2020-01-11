@@ -67,10 +67,7 @@ export default {
             type: String,
             default: () => "leafKey"
         },
-        value: {
-            type: Array,
-            default: () => []
-        },
+        value: Array,
         titles: {
             type: Array,
             default: () => ["源列表", "目标列表"]
