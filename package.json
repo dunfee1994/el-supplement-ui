@@ -18,6 +18,7 @@
         "url": "git+https://github.com/dunfee1994/el-supplement-ui.git"
     },
     "keywords": [
+        "vue",
         "el-supplement-ui",
         "tree-transfer",
         "checkbox-dropdown"
