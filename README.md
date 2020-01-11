@@ -188,30 +188,25 @@ export default {
 ### Attributes
 | 参数 | 说明 | 类型 | 可选值 | 默认值 |
 | :---- | :---- | :---- | :---- | :---- |
-| value / v-model | 绑定值 | array | - | [] |
+| value / v-model | 绑定值 | array | - | - |
 | valueType | value的类型。类型为key时，value为右侧树所有节点的nodeKey组成的数组；类型为leafKey时，value为右侧树所有叶子节点的nodeKey组成的数组。 | string | key / leafKey | leafKey |
 | data | Transfer的数据源（树形结构) | array | - | [] |
 | filterable | 是否过滤节点 | boolean | - | false |
 | filterPlaceholder | 搜索框占位符 | string | - | 输入关键字进行过滤 |
-|  |  |  |  |  |
-|  |  |  |  |  |
-|  |  |  |  |  |
-|  |  |  |  |  |
-|  |  |  |  |  |
-|  |  |  |  |  |
-|  |  |  |  |  |
+| titles | 自定义panel标题 | array | - | ["源列表", "目标列表"] |
+| buttonTexts | 自定义按钮文案 | array | - | ["添加", "移除"] |
+| nodeKey | 每个树节点用来作为唯一标识的属性，整棵树应该是唯一的 | string | - | id |
+| openAll | 是否展开所有节点 | boolean | - | true |
+| defaultProps | 树的配置选项 | object | - | { label: "label", children: "children" } |
+| leftDefaultChecked | 初始状态下左侧树选中的节点的nodeKey数组 | array | - | [] |
+| rightDefaultChecked | 初始状态下右侧树选中的节点的nodeKey数组 | array | - | [] |
 
 ### Events
 | 事件名称 | 说明 | 回调参数 |
 | :---- | :---- | :---- |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
+| change | 右侧树节点变化时触发 | 当前值、左侧树的数据、右侧树的数据 |
+| left-check-change | 左侧树节点checkbox被用户选中 / 取消选中时触发 | 左侧树目前被选中的节点所组成的数组、左侧树目前被选中的叶子节点所组成的数组、左侧树目前被选中的节点的key所组成的数组、左侧树目前被选中的叶子节点的key所组成的数组、左侧树目前半选中的节点所组成的数组、左侧树目前半选中的节点的 key 所组成的数组 |
+| right-check-change | 右侧树节点checkbox被用户选中 / 取消选中时触发 | 右侧树目前被选中的节点所组成的数组、右侧树目前被选中的叶子节点所组成的数组、右侧树目前被选中的节点的key所组成的数组、右侧树目前被选中的叶子节点的key所组成的数组、右侧树目前半选中的节点所组成的数组、右侧树目前半选中的节点的 key 所组成的数组 |
 
 ## ElSupCheckboxDropdown
 ElSupCheckboxDropdown，下拉复选框组件，以下拉的方式显示复选框列表。这个组件主要依赖element-ui的el-button、el-dropdown、el-dropdown-menu、el-dropdown-item、el-checkbox-group、el-checkbox等组件。
@@ -268,24 +263,13 @@ export default {
 ### Attributes
 | 参数 | 说明 | 类型 | 可选值 | 默认值 |
 | :---- | :---- | :---- | :---- | :---- |
-|  |  |  |  |  |
-|  |  |  |  |  |
-|  |  |  |  |  |
-|  |  |  |  |  |
-|  |  |  |  |  |
-|  |  |  |  |  |
-|  |  |  |  |  |
+| value / v-model | 绑定值 | array | - | - |
+| buttonText | 自定义按钮文案 | string | - | "列表项" |
+| allColumns | 所有的checkbox选项 | array | - | [] |
+| maxHeight | 下拉框的最大高度 | string | - | "290px" |
 
 
 ### Events
 | 事件名称 | 说明 | 回调参数 |
 | :---- | :---- | :---- |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
+| change | checkbox选中状态改变触发 | 当前值 |
