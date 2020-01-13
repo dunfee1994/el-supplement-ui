@@ -199,14 +199,15 @@ export default {
         frmtData(data) {
             // 格式化数据（添加是否是叶子节点的表示isLeaf，是为true，不是为false）
             var i = 0,
-                len = data.length;
+                len = data.length,
+                _children = this.defaultProps.children || "children";
             for (; i < len; i++) {
                 if (
-                    Array.isArray(data[i].children) &&
-                    data[i].children.length > 0
+                    Array.isArray(data[i][_children]) &&
+                    data[i][_children].length > 0
                 ) {
                     data[i]["isLeaf"] = false;
-                    this.frmtData(data[i].children);
+                    this.frmtData(data[i][_children]);
                 } else {
                     data[i]["isLeaf"] = true;
                 }
@@ -231,7 +232,8 @@ export default {
             // 左侧panel的数据data
             let data = JSON.parse(JSON.stringify(this.treeData)),
                 value = this.value,
-                nodeKey = this.nodeKey || "id";
+                nodeKey = this.nodeKey || "id",
+                _children = this.defaultProps.children || "children";
             if (data.length === 0) {
                 return [];
             }
@@ -241,20 +243,23 @@ export default {
                     len = data.length;
                 for (; i < len; i++) {
                     if (
-                        Array.isArray(data[i].children) &&
-                        data[i].children.length > 0
+                        Array.isArray(data[i][_children]) &&
+                        data[i][_children].length > 0
                     ) {
-                        filterData(data[i].children, value, nodeKey);
-                        data[i].children = data[i].children.filter(item => {
+                        filterData(data[i][_children], value, nodeKey);
+                        data[i][_children] = data[i][_children].filter(item => {
                             return item.isLeaf
                                 ? value.indexOf(item[nodeKey]) < 0
-                                : item.children.length > 0;
+                                : item[_children].length > 0;
                         });
                     }
                 }
             }
             filterData(data, value, nodeKey);
-            if (data[0].children.length === 0) {
+            if (
+                Array.isArray(data[0][_children]) &&
+                data[0][_children].length === 0
+            ) {
                 return [];
             }
             return data;
@@ -263,7 +268,8 @@ export default {
             // 右侧panel的数据data
             let data = JSON.parse(JSON.stringify(this.treeData)),
                 value = this.value,
-                nodeKey = this.nodeKey || "id";
+                nodeKey = this.nodeKey || "id",
+                _children = this.defaultProps.children || "children";
             if (data.length === 0) {
                 return [];
             }
@@ -273,20 +279,23 @@ export default {
                     len = data.length;
                 for (; i < len; i++) {
                     if (
-                        Array.isArray(data[i].children) &&
-                        data[i].children.length > 0
+                        Array.isArray(data[i][_children]) &&
+                        data[i][_children].length > 0
                     ) {
-                        filterData(data[i].children, value, nodeKey);
-                        data[i].children = data[i].children.filter(item => {
+                        filterData(data[i][_children], value, nodeKey);
+                        data[i][_children] = data[i][_children].filter(item => {
                             return item.isLeaf
                                 ? value.indexOf(item[nodeKey]) > -1
-                                : item.children.length > 0;
+                                : item[_children].length > 0;
                         });
                     }
                 }
             }
             filterData(data, value, nodeKey);
-            if (data[0].children.length === 0) {
+            if (
+                Array.isArray(data[0][_children]) &&
+                data[0][_children].length === 0
+            ) {
                 return [];
             }
             return data;
