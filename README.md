@@ -39,7 +39,7 @@ import 'el-supplement-ui/lib/index.scss';
 ElSupTreeTransfer，这个组件的功能类似于element-ui的transfer组件，但其是一个支持树形结构的穿梭框组件。这个组件主要依赖element-ui的el-checkbox、el-input、el-button、el-tree等组件和el-transfer组件的样式.
 
 ### 截图
-![截图](https://github.com/dunfee1994/el-supplement-ui/v1/example/img/ElSupTreeTransfer.png)
+![截图](https://github.com/dunfee1994/el-supplement-ui/raw/v1/example/img/ElSupTreeTransfer.png)
 
 ### Use
 ```html
@@ -215,7 +215,7 @@ export default {
 ElSupCheckboxDropdown，下拉复选框组件，以下拉的方式显示复选框列表。这个组件主要依赖element-ui的el-button、el-dropdown、el-dropdown-menu、el-dropdown-item、el-checkbox-group、el-checkbox等组件。
 
 ### 截图
-![截图](https://github.com/dunfee1994/el-supplement-ui/v1/example/img/ElSupCheckboxDropdown.png)
+![截图](https://github.com/dunfee1994/el-supplement-ui/raw/v1/example/img/ElSupCheckboxDropdown.png)
 
 ### Use
 ```html
