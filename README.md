@@ -38,6 +38,9 @@ import 'el-supplement-ui/lib/index.scss';
 ## ElSupTreeTransfer
 ElSupTreeTransfer，这个组件的功能类似于element-ui的transfer组件，但其是一个支持树形结构的穿梭框组件。这个组件主要依赖element-ui的el-checkbox、el-input、el-button、el-tree等组件和el-transfer组件的样式.
 
+### 截图
+![截图](https://github.com/dunfee1994/el-supplement-ui/v1/example/img/ElSupTreeTransfer.png)
+
 ### Use
 ```html
 <template>
@@ -81,15 +84,15 @@ export default {
             data: [
                 {
                     id: 1,
-                    label: "大核心网",
+                    label: "总部",
                     children: [
                         {
                             id: 1001,
-                            label: "核心网运行部",
+                            label: "部门一",
                             children: [
                                 {
                                     id: 1001001,
-                                    label: "华为专业组",
+                                    label: "小组一",
                                     children: [
                                         {
                                             id: 1001001001,
@@ -117,7 +120,7 @@ export default {
                         },
                         {
                             id: 1002,
-                            label: "互联网运行部",
+                            label: "部门二",
                             children: [
                                 {
                                     id: 1002001,
@@ -135,7 +138,7 @@ export default {
                                             label: "王五3"
                                         }
                                     ],
-                                    label: "EPC组"
+                                    label: "小组一"
                                 },
                                 {
                                     id: 1002002,
@@ -157,7 +160,7 @@ export default {
                                             label: "张三4"
                                         }
                                     ],
-                                    label: "性能组"
+                                    label: "小组二"
                                 }
                             ]
                         },
@@ -211,6 +214,9 @@ export default {
 ## ElSupCheckboxDropdown
 ElSupCheckboxDropdown，下拉复选框组件，以下拉的方式显示复选框列表。这个组件主要依赖element-ui的el-button、el-dropdown、el-dropdown-menu、el-dropdown-item、el-checkbox-group、el-checkbox等组件。
 
+### 截图
+![截图](https://github.com/dunfee1994/el-supplement-ui/v1/example/img/ElSupCheckboxDropdown.png)
+
 ### Use
 ```html
 <template>
@@ -235,20 +241,10 @@ export default {
         return {
             checkedColumns: [], // 选中值（表格需展示的column）
             allColumns: [
-                { label: "realName", name: "姓名" },
-                { label: "departmentName", name: "部门" },
-                { label: "majorName", name: "专业组" },
-                { label: "certificate", name: "认证数" },
-                { label: "activity1", name: "授课量" },
-                { label: "activity2", name: "参加培训量" },
-                { label: "weekkly", name: "周报" },
-                { label: "order", name: "工单处理量" },
-                { label: "project", name: "工程割接量" },
-                { label: "log_operation", name: "系统使用量" },
-                { label: "value_week", name: "值周量" },
-                { label: "demandSubmission", name: "需求提交量" },
-                { label: "service_count", name: "服务开发量" },
-                { label: "deployed_service", name: "服务发布量" }
+                { label: "name", name: "姓名" },
+                { label: "age", name: "年龄" },
+                { label: "sex", name: "性别" },
+                { label: "major", name: "专业" }
             ] // 表格全部column
         }
     },
