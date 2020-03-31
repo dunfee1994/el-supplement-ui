@@ -11,7 +11,7 @@
         >
             <el-checkbox-group v-model="checkedColumns" @change="handleChange">
                 <el-dropdown-item v-for="(item,index) in allColumns" :key="index">
-                    <el-checkbox :label="item.label">{{item.name}}</el-checkbox>
+                    <el-checkbox :label="item.label" :disabled="item.readonly">{{item.name}}</el-checkbox>
                 </el-dropdown-item>
             </el-checkbox-group>
         </el-dropdown-menu>
