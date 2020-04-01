@@ -54,6 +54,11 @@ export default {
             this.$emit("input", val);
             this.$emit("change", val);
         }
+    },
+    watch: {
+        value(val) {
+            this.checkedColumns = JSON.parse(JSON.stringify(val));
+        }
     }
 };
 </script>
