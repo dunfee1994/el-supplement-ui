@@ -1,4 +1,4 @@
-import ElSupUploadButton from './src/ElSupUploadButton';
+import ElSupUploadButton from './src/Main.vue';
 
 /* istanbul ignore next */
 ElSupUploadButton.install = function(vue) {
