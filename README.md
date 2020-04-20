@@ -1,5 +1,5 @@
 # el-supplement-ui
-el-supplement-ui是一个基于vue和element-ui的UI组件，其中包含ElSupTreeTransfer（支持树形结构的穿梭框）、ElSupCheckboxDropdown（下拉复选框）。本组件需在引入element-ui之后方可使用，所以，在使用之前请确认是否已经引入element-ui。
+el-supplement-ui是一个基于vue和element-ui的UI组件，其中包含ElSupTreeTransfer（支持树形结构的穿梭框）、ElSupCheckboxDropdown（下拉复选框）、ElSupUploadButton（上传（文件）按钮）。本组件需在引入element-ui之后方可使用，所以，在使用之前请确认是否已经引入element-ui。
 
 ## Install
 ```shell
@@ -24,10 +24,12 @@ Vue.use(ElSupplement)
 // example two
 import {
     ElSupCheckboxDropdown,
-    ElSupTreeTransfer
+    ElSupTreeTransfer,
+    ElSupUploadButton
 } from 'el-supplement-ui'
 Vue.component(ElSupCheckboxDropdown.name, ElSupCheckboxDropdown)
 Vue.component(ElSupTreeTransfer.name, ElSupTreeTransfer)
+Vue.component(ElSupUploadButton.name, ElSupUploadButton)
 
 // 引入element-ui index.css
 import 'element-ui/lib/theme-chalk/index.css';
@@ -55,18 +57,6 @@ ElSupTreeTransfer，这个组件的功能类似于element-ui的transfer组件，
                 :left-default-checked="leftDefaultChecked"
                 :right-default-checked="rightDefaultChecked"
                 @change="handleChange1"
-            ></el-sup-tree-transfer>
-        </section>
-        <section style="margin: 2vh 2vw;">
-            <el-sup-tree-transfer
-                v-model="value2"
-                filterable
-                open-all
-                data-type="leafKey"
-                :data="data"
-                :left-default-checked="leftDefaultChecked"
-                :right-default-checked="rightDefaultChecked"
-                @change="handleChange2"
             ></el-sup-tree-transfer>
         </section>
     </el-container>
@@ -269,3 +259,45 @@ export default {
 | 事件名称 | 说明 | 回调参数 |
 | :---- | :---- | :---- |
 | change | checkbox选中状态改变触发 | 当前值 |
+
+## ElSupUploadButton
+ElSupUploadButton，上传（文件）按钮。这个组件主要依赖element-ui的el-button等组件。
+
+### use
+```html
+<template>
+    <el-container>
+        <el-sup-upload-button @after-click="handleAfterClick" text="上传" accept=".xls, .xlsx">
+    </el-container>
+</template>
+```
+```javascript
+import { ElSupUploadButton } from 'el-supplement-ui'
+export default {
+    name: "demo",
+    components: {
+        ElSupUploadButton
+    },
+    data() {
+        return {};
+    },
+    methods: {
+        handleAfterClick(file) {
+            /**
+             * @param {Object[File]} file 上传的文件file
+             */
+        }
+    }
+}
+```
+
+### Attributes
+| 参数 | 说明 | 类型 | 可选值 | 默认值 |
+| :---- | :---- | :---- | :---- | :---- |
+| text | 自定义文案 | string | - | "导入" |
+| accept | 可接受的文件格式 | string | - | ".xls, .xlsx" |
+
+### Events
+| 事件名称 | 说明 | 回调参数 |
+| :---- | :---- | :---- |
+| after-click | 点击之后的回调 | 需要上传的文件file |

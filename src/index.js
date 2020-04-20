@@ -1,9 +1,11 @@
 import ElSupCheckboxDropdown from '../packages/checkbox-dropdown/index.js';
 import ElSupTreeTransfer from '../packages/tree-transfer/index.js';
+import ElSupUploadButton from '../packages/upload-button/index.js';
 
 const components = [
     ElSupCheckboxDropdown,
-    ElSupTreeTransfer
+    ElSupTreeTransfer,
+    ElSupUploadButton
 ];
 
 const install = function(Vue) {
@@ -14,12 +16,14 @@ const install = function(Vue) {
 
 export {
     ElSupCheckboxDropdown,
-    ElSupTreeTransfer
+    ElSupTreeTransfer,
+    ElSupUploadButton
 };
 
 export default {
-    version: "1.0.2",
+    version: "1.2.0",
     install,
     ElSupCheckboxDropdown,
-    ElSupTreeTransfer
+    ElSupTreeTransfer,
+    ElSupUploadButton
 };
