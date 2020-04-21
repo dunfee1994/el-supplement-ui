@@ -1,6 +1,6 @@
 {
     "name": "el-supplement-ui",
-    "version": "1.2.1",
+    "version": "1.2.2",
     "description": "对element-ui进行拓展的ui组件",
     "main": "src/index.js",
     "files": [

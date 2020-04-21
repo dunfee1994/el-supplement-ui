@@ -261,13 +261,13 @@ export default {
 | change | checkbox选中状态改变触发 | 当前值 |
 
 ## ElSupUploadButton
-ElSupUploadButton，上传（文件）按钮。这个组件主要依赖element-ui的el-button等组件。
+ElSupUploadButton，上传（文件）按钮，用于单文件上传，不呈现上传文件列表，将el-upload组件原有的上传文件行为屏蔽掉了，上传文件的处理可以放到本组件on-change事件的处理程序当中。这个组件主要依赖element-ui的el-upload、el-button等组件。
 
 ### use
 ```html
 <template>
     <el-container>
-        <el-sup-upload-button @after-click="handleAfterClick" text="上传" accept=".xls, .xlsx">
+        <el-sup-upload-button accept=".xls" buttonType="primary" @on-change="handleOnChange"></el-sup-upload-button>
     </el-container>
 </template>
 ```
@@ -282,7 +282,7 @@ export default {
         return {};
     },
     methods: {
-        handleAfterClick(file) {
+        handleOnChange(file) {
             /**
              * @param {Object[File]} file 上传的文件file
              */
@@ -294,10 +294,11 @@ export default {
 ### Attributes
 | 参数 | 说明 | 类型 | 可选值 | 默认值 |
 | :---- | :---- | :---- | :---- | :---- |
-| text | 自定义文案 | string | - | "导入" |
 | accept | 可接受的文件格式 | string | - | ".xls, .xlsx" |
+| buttonText | 自定义按钮文案 | string | - | "导入" |
+| buttonType | 按钮type | string | primary / success / warning / danger / info / text | "" |
 
 ### Events
 | 事件名称 | 说明 | 回调参数 |
 | :---- | :---- | :---- |
-| after-click | 点击之后的回调 | 需要上传的文件file |
+| on-change | 文件状态改变事件，此处事件处理可用于文件上传处理 | 需要上传的文件file |
