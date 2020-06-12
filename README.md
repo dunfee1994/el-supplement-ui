@@ -257,6 +257,7 @@ export default {
 
 #### props
 | 参数 | 说明 | 类型 | 可选值 | 默认值 |
+| :---- | :---- | :---- | :---- | :---- |
 | label | el-checkbox label | string | - | "label" |
 | name | el-checkbox name | string | - | "name" |
 
