@@ -255,6 +255,7 @@ export default {
 | allColumns | 所有的checkbox选项 | array | - | [{label: String, name: String, readonly: Boolean}]，label为选中状态值，name为原声name属性，readonly标记当前选项是否只读，也就是是否禁用切换选中状态 |
 | maxHeight | 下拉框的最大高度 | string | - | "290px" |
 
+#### props
 | 参数 | 说明 | 类型 | 可选值 | 默认值 |
 | label | el-checkbox label | string | - | "label" |
 | name | el-checkbox name | string | - | "name" |
