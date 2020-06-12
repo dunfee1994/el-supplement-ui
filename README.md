@@ -251,9 +251,13 @@ export default {
 | :---- | :---- | :---- | :---- | :---- |
 | value / v-model | 绑定值 | array | - | - |
 | buttonText | 自定义按钮文案 | string | - | "列表项" |
+| props | 配置选项，具体看下表 | object | - | - |
 | allColumns | 所有的checkbox选项 | array | - | [{label: String, name: String, readonly: Boolean}]，label为选中状态值，name为原声name属性，readonly标记当前选项是否只读，也就是是否禁用切换选中状态 |
 | maxHeight | 下拉框的最大高度 | string | - | "290px" |
 
+| 参数 | 说明 | 类型 | 可选值 | 默认值 |
+| label | el-checkbox label | string | - | "label" |
+| name | el-checkbox name | string | - | "name" |
 
 ### Events
 | 事件名称 | 说明 | 回调参数 |
